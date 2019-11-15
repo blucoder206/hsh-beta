@@ -2,13 +2,14 @@
 
 int main(void)
 {
-	char buffer[0];
-	char *b = buffer;
-	size_t bufsize = 32;
+/**    char buffer[0]; **/
+	char *b = NULL;
+	size_t bufsize = 16;
 	size_t chars;
 
 	printf("$ ");
 	chars = getline(&b, &bufsize, stdin);
-	printf("%s", buffer);
+	printf("%s", b);
+    printf("%zu", chars);
 	return(0);
 }

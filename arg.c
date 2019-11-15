@@ -1,17 +1,17 @@
 #include <stdio.h>
 /**
  * main - prints all arguments without argc
- * @argc: counts array size
- * @argv: elements of array
+ * @ac: vector size
+ * @argv: elements of vector
  * Return: nothing
  */
-int main(int __attribute__((unused)) argc, char *argv[])
+int main(int ac, char **av)
 {
 	int i;
 
-	for (i = 0; argv[i] != 00; i++)
+	for (i = 0; av[i] != 00; i++)
 	{
-		printf("%s\n", argv[i]);
+		printf("%s\n", av[i]);
 	}
 	return (0);
 }

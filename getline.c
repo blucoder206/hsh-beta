@@ -1,25 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int input(char *s,int length);
-
-int main()
+int main(void)
 {
-    char *buffer;
-    size_t bufsize = 32;
-    size_t characters;
+	ssize_t readed_bytes;
+	size_t numberbytes;
+	char *string;
 
-    buffer = (char *)malloc(bufsize * sizeof(char));
-    if( buffer == NULL)
-    {
-        perror("Unable to allocate buffer");
-        exit(1);
-    }
-
-    printf("$: ");
-    characters = getline(&buffer,&bufsize,stdin);
-    printf("%zu characters were read.\n",characters);
-    printf("%s\n",buffer);
-
-    return(0);
+	numberbytes = 0;
+	string = NULL;
+	printf("$ ");
+	readed_bytes = getline(&string, &numberbytes, stdin);
+	if (readed_bytes == -1)
+	{
+		printf("Error");
+	}
+	else
+	{
+		printf("%s", string);
+	}
+	free(string);
+	return (0);
 }
