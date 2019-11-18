@@ -8,7 +8,7 @@ int main (void)
     ssize_t readed_bytes;
     size_t numberbytes;
     char *string;
-    const char s[2] = " ";
+    const char s[2] = " \n";
     char *token;
     int tahv;
 
@@ -18,7 +18,7 @@ int main (void)
     printf("$ ");
 
     readed_bytes = getline(&string, &numberbytes, stdin);
-    char *argv[numberbytes];
+    char *argv[4];
     if (readed_bytes == -1)
     {
         printf("Error");
@@ -32,7 +32,7 @@ int main (void)
             argv[tahv++] = token;
             token = strtok(NULL, s);
 		}
-		printf("argv[0]: %s\n", argv[1]);
+		argv[3] = 0;
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror("Error: \n");
