@@ -2,12 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 /**
 * main - super simple shell
 *
 * Return: nothig
 **/
 int main(void)
+{
+for (;;)
 {
 	ssize_t readed_bytes;
 	size_t numberbytes;
@@ -16,6 +19,8 @@ int main(void)
 	char **argv;
 	char *token;
 	int tahv;
+	pid_t child_pid;
+	int status;
 
 	numberbytes = 0;
 	string = NULL;
@@ -38,12 +43,23 @@ int main(void)
 			token = strtok(NULL, s);
 		}
 		argv[tahv] = 0;
-		if (execve(argv[0], argv, NULL) == -1)
+
+
+		child_pid = fork();
+		if (child_pid == 0)
 		{
-			perror("Error: \n");
+			if (execve(argv[0], argv, NULL) == -1)
+			{
+				 printf("Error");
+			}
+		}
+		else
+		{
+			wait(&status);
 		}
 	}
-	printf("%lu", readed_bytes);
 	free(string);
+	free(argv);
+}
 	return (0);
 }
