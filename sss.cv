@@ -12,8 +12,7 @@ int main (void)
     char **argv;
     char *token;
     int tahv;
-	int sizeofmyarray;
-	char **argv;
+
     numberbytes = 0;
     string = NULL;
 
@@ -41,8 +40,6 @@ int main (void)
 			perror("Error: \n");
 		}
 	}
-	printf("%lu", readed_bytes);
     free(string);
     return (0);
 }
-
