@@ -11,14 +11,16 @@ int main (void)
     const char s[2] = " \n";
     char *token;
     int tahv;
-
+	int sizeofmyarray;
+	char **argv;
     numberbytes = 0;
     string = NULL;
 
     printf("$ ");
 
     readed_bytes = getline(&string, &numberbytes, stdin);
-    char *argv[4];
+	argv = malloc(sizeof(readed_bytes));
+	printf("");
     if (readed_bytes == -1)
     {
         printf("Error");
@@ -38,6 +40,8 @@ int main (void)
 			perror("Error: \n");
 		}
 	}
+	printf("%lu", readed_bytes);
     free(string);
     return (0);
 }
+
