@@ -36,7 +36,8 @@ int main(int ac, char **av)
     struct stat st;
 
 	char cwd[PATH_MAX];
-	char *slash = "/";
+	char slash[2] = "/";
+	char *router;
 	if (getcwd(cwd, sizeof(cwd)) != NULL)
 	{
 	}
@@ -56,10 +57,10 @@ int main(int ac, char **av)
     while (av[i])
     {
         printf("%s:", av[i]);
-		cwd = _strcat(cwd, slash);
+		router = _strcat(cwd, slash);
 		av[1] = _strcat(cwd, av[1]);
-		printf("Ahora av[1] es: %s:\n", av[1]);
-        if (stat(av[i], &st) == 0)
+
+		if (stat(av[i], &st) == 0)
         {
             printf(" FOUND\n");
         }
